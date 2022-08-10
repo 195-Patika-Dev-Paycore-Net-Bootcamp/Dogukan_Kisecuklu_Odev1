@@ -20,7 +20,8 @@ namespace Dogukan_Kisecuklu_Hafta_1.Controllers
     }
     public class Result // Sonucu göstermek için result classı oluşturuldu
     {
-      public double balance { get; set; } // Ana para 
+      public double InterestAmount { get; set; } // Faizden önce ana para
+      public double TotalBalance { get; set; } // Faizden sonra ana para 
     }
     [Route("api/[controller]")]
     [ApiController]
@@ -37,7 +38,8 @@ namespace Dogukan_Kisecuklu_Hafta_1.Controllers
         public ActionResult<Result> Get([FromQuery] Interest input)// Interest tipinde input alınarak para,faiz,zaman alındı
         {
             Result result = new(); // Yeni bir result oluşturuldu
-            result.balance = input.balance * Math.Pow((1 + input.interestRate), input.time); // Formül uygulanarak bileşik faiz hesaplandı
+            result.TotalBalance = input.balance * Math.Pow((1 + input.interestRate), input.time); // Formül uygulanarak bileşik faiz hesaplandı
+            result.InterestAmount = input.balance;
             return result; // Response'da faiz sonucu döndürüldü.
         }
         
