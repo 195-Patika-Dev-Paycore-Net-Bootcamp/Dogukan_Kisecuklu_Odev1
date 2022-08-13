@@ -39,7 +39,7 @@ namespace Dogukan_Kisecuklu_Hafta_1.Controllers
         {
             Result result = new(); // Yeni bir result oluşturuldu
             result.TotalBalance = input.balance * Math.Pow((1 + input.interestRate), input.time); // Formül uygulanarak bileşik faiz hesaplandı
-            result.InterestAmount = result.TotalBalance-input.balance;// Faizden önceki ana para
+            result.InterestAmount = result.TotalBalance-input.balance;// Faizden getirisi hesaplandı
             return result; // Response'da faiz sonucu döndürüldü.
         }
         
